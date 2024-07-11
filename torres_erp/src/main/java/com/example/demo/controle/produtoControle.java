@@ -1,4 +1,4 @@
-package com.example.demo.modelo;
+package com.example.demo.controle;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.modelo.produtoModelo;
 import com.example.demo.repositorio.produtoRepositorio;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +27,7 @@ public class produtoControle {
 		
 		return ResponseEntity.ok(repositorio.save(entity));
 	}
-	 @GetMapping("/listra")
+	 @GetMapping("/listar")
 	 public ResponseEntity<List<produtoModelo>> lista(){
 		 
 		 return ResponseEntity.ok(repositorio.findAll());
