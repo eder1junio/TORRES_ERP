@@ -24,8 +24,7 @@ public class produtoModelo {
 	public Float valorProduto;
 	
 	
-	 @ManyToMany(mappedBy = "produto")
-	 private List<vendasModelo> vendas;
+	
 	
 	public Long getId() {
 		return id;
@@ -51,12 +50,7 @@ public class produtoModelo {
 	public void setValorProduto(Float valorProduto) {
 		this.valorProduto = valorProduto;
 	}
-	public List<vendasModelo> getVendas() {
-		return vendas;
-	}
-	public void setVendas(List<vendasModelo> vendas) {
-		this.vendas = vendas;
-	}
+	
 	
 
 }

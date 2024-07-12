@@ -37,7 +37,7 @@ public class vendasControle {
 	}
 	
 	@GetMapping("/listar")
-	public ResponseEntity<List<vendasModelo>> lista(@RequestParam String param) {
+	public ResponseEntity<List<vendasModelo>> lista() {
 		return ResponseEntity.ok(repositorio.findAll());
 	}
 	

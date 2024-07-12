@@ -37,7 +37,7 @@
                 <label>Nome Do Cliente</label>
             </div>
             <div class="col">
-              <input type="text" class="form-control" placeholder="produto" aria-label="produto" id="nomeCliente"> 
+              <input type="text" class="form-control" placeholder="produto" aria-label="produto" id="nomeVenda"> 
           </div>
           <div class="col">
             <label>Data da Venda</label>
@@ -82,13 +82,44 @@
         </div>
         <div class="row" id="butao">
             <div class="col">
-                <button type="button" class="btn btn-primary" onclick="salvaProduto()"><i class="bi bi-floppy-fill"></i> Salvar</button>
+                <button type="button" class="btn btn-primary" onclick="salvaVenda()"><i class="bi bi-floppy-fill"></i> Salvar</button>
             </div>
             <div class="col">
-                <button type="button" class="btn btn-primary" onclick="limpa()"><i class="bi bi-x-lg"></i> Limpa </button>
+                <button type="button" class="btn btn-primary" onclick="openModal()" ><i class="bi bi-x-lg"></i> Limpa </button>
             </div>
         </div>
     </div>
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <table class="table table-bordered border-black" id="produtosTableModal">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">id</th>
+                    <th scope="col">nome</th>
+                    <th scope="col">valor</th>
+                    <th scope="col">ação</th>
+                  </tr>
+                </thead>
+                <tbody>
+    
+                </tbody>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
     
 </body>
 <script src="cadastroVendas.js"></script>
