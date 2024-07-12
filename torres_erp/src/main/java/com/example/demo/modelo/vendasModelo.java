@@ -23,7 +23,6 @@ public class vendasModelo {
 	public String cliente;
 	public Float valorTotalDaVenda;
 	public String tipoPagamento;
-	public int quantidadeTotaProdutos;
 	public LocalDate data;
 	
 	@ManyToAny()
@@ -54,12 +53,7 @@ public class vendasModelo {
 	public void setTipoPagamento(String tipoPagamento) {
 		this.tipoPagamento = tipoPagamento;
 	}
-	public int getQuantidade() {
-		return quantidadeTotaProdutos;
-	}
-	public void setQuantidade(int quantidadeTotaProdutos) {
-		this.quantidadeTotaProdutos = quantidadeTotaProdutos;
-	}
+	
 	public LocalDate getData() {
 		return data;
 	}

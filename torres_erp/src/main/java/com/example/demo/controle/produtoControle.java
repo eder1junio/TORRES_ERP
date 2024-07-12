@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.demo.modelo.produtoModelo;
 import com.example.demo.modelo.vendasModelo;
 import com.example.demo.repositorio.produtoRepositorio;
+import com.example.demo.service.produtoModeloService;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +23,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/produto")
 public class produtoControle {
+	
+	@Autowired
+	produtoModeloService produtoModeloService;
 	
 	@Autowired
 	produtoRepositorio repositorio;
@@ -40,7 +44,14 @@ public class produtoControle {
 	 public ResponseEntity<?> buscar(@RequestParam Long id) {
 		 Optional<produtoModelo> buscar = repositorio.findById(id);
 	 	return ResponseEntity.ok(buscar.get());
+	 	
 	 }
+	 
+	 @GetMapping("/procuranome")
+	 public ResponseEntity<List<produtoModelo>> procuraNome(@RequestParam String nome) {
+	 	return ResponseEntity.ok(produtoModeloService.buscarPorNomeParcial(nome));
+	 }
+	 
 	 
 	
 
