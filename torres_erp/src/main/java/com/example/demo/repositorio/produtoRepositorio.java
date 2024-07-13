@@ -12,5 +12,12 @@ public interface produtoRepositorio extends JpaRepository<produtoModelo, Long> {
 	
 	@Query("SELECT p FROM produtoModelo p WHERE p.nome LIKE %:nome%")
     List<produtoModelo> findByNomeContaining(@Param("nome") String nome);
+    
+    
+    @Query( value = "SELECT v.produto_id, p.nome, COUNT(v.produto_id) as total FROM vendas_modelo_produto v \r\n"
+    		+ "JOIN produto_modelo p ON v.produto_id = p.id  GROUP BY v.produto_id, p.nome ORDER BY total DESC;",  nativeQuery = true)
+ 	List<produtoModelo[]> findTopProdutos();
+    
+    
 
 }

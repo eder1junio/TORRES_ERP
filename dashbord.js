@@ -11,7 +11,13 @@ xrf.onload = function(){
         let vendas = JSON.parse(xrf.responseText);
         for(const vendas1 of vendas){
             valor.push(vendas1.valorTotalDaVenda);
-            data.push(vendas1.data);
+            let date = new Date(vendas1.data);
+            let formattedDate = date.toLocaleDateString('pt-BR', {
+              day: '2-digit',
+              month: '2-digit',
+              year: 'numeric'
+          });
+            data.push(formattedDate);
             
         }const ctx = document.getElementById('graficoDia');
 
@@ -20,7 +26,7 @@ xrf.onload = function(){
           data: {
             labels: data,
             datasets: [{
-              label: '# of Votes',
+              label: '# Vendas Por dia',
               data: valor,
               borderWidth: 1
             }]

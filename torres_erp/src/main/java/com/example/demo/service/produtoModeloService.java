@@ -16,5 +16,8 @@ public class produtoModeloService {
 	public List<produtoModelo> buscarPorNomeParcial(String nome) {
         return repositorio.findByNomeContaining(nome);
     }
+	public List<produtoModelo[]>produtoTop(){
+		return repositorio.findTopProdutos();
+	}
 
 }

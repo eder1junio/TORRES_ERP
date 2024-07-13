@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.modelo.produtoModelo;
-import com.example.demo.modelo.vendasModelo;
 import com.example.demo.repositorio.produtoRepositorio;
 import com.example.demo.service.produtoModeloService;
 
@@ -51,6 +50,12 @@ public class produtoControle {
 	 public ResponseEntity<List<produtoModelo>> procuraNome(@RequestParam String nome) {
 	 	return ResponseEntity.ok(produtoModeloService.buscarPorNomeParcial(nome));
 	 }
+	 
+	 @GetMapping("/produtoTop")
+	 public ResponseEntity< List<produtoModelo[]>> getTopProdutos() {
+	        return ResponseEntity.ok(produtoModeloService.produtoTop());
+	 }
+	 
 	 
 	 
 	
