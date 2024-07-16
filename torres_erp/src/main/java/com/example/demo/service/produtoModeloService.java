@@ -17,8 +17,7 @@ public class produtoModeloService {
 	@Autowired
 	produtoRepositorio repositorio;
 	
-	@Autowired
-	vendasRepositorio  repositorioVendas;
+	
 	
 	public List<produtoModelo> buscarPorNomeParcial(String nome) {
         return repositorio.findByNomeContaining(nome);
@@ -27,8 +26,6 @@ public class produtoModeloService {
 		 List<produtoTop> s =  repositorio.findTopProdutos();
 		 return s;
 	}
-	public List<totalVendidoPorDia>ListatotalVendidoPorDia(){
-		return repositorioVendas.vendasTotalPorDia();
-	}
+	
 
 }
