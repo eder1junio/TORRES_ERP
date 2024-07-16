@@ -1,6 +1,5 @@
 package com.example.demo.controle;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,13 +54,7 @@ public class produtoControle {
 	 
 	 @GetMapping("/produtoTop")
 	 public ResponseEntity< List<produtoTop>> getTopProdutos() {
-		 /*List<Object> produtosObjetive =  produtoModeloService.produtoTop();
-
-		List<produtoModelo> produtosTeste = new ArrayList();
-		for(Object produto : produtosObjetive) {
-			produtosTeste.add(null) = produtosObjetive.get(i);
-		}
-*/
+		
 	    return ResponseEntity.ok(produtoModeloService.produtoTopGrafico());
 	 }
 	 

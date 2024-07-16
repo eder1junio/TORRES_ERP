@@ -17,6 +17,24 @@ public class fornecedorModelo {
 	
 	public String forneceodor;
 	public LocalDate dataCadastro;
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getForneceodor() {
+		return forneceodor;
+	}
+	public void setForneceodor(String forneceodor) {
+		this.forneceodor = forneceodor;
+	}
+	public LocalDate getDataCadastro() {
+		return dataCadastro;
+	}
+	public void setDataCadastro(LocalDate dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
 	
 
 }

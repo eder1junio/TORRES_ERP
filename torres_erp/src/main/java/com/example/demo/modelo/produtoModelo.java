@@ -2,11 +2,13 @@ package com.example.demo.modelo;
 
 import java.math.BigInteger;
 import java.time.LocalDate;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class produtoModelo {
@@ -20,7 +22,6 @@ public class produtoModelo {
 	public BigInteger codigoBarras;
 	public Float valorVendaProduto;
 
-	
 	
 	
 	
@@ -48,12 +49,25 @@ public class produtoModelo {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public Float getValorProduto() {
-		return valorProduto;
+	public Float getValorProdutoCompra() {
+		return valorProdutoCompra;
 	}
-	public void setValorProduto(Float valorProduto) {
-		this.valorProduto = valorProduto;
+	public void setValorProdutoCompra(Float valorProdutoCompra) {
+		this.valorProdutoCompra = valorProdutoCompra;
 	}
+	public BigInteger getCodigoBarras() {
+		return codigoBarras;
+	}
+	public void setCodigoBarras(BigInteger codigoBarras) {
+		this.codigoBarras = codigoBarras;
+	}
+	public Float getValorVendaProduto() {
+		return valorVendaProduto;
+	}
+	public void setValorVendaProduto(Float valorVendaProduto) {
+		this.valorVendaProduto = valorVendaProduto;
+	}
+	
 	
 	
 
