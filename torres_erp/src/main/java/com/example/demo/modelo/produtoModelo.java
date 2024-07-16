@@ -1,18 +1,12 @@
 package com.example.demo.modelo;
 
-import java.util.List;
-
-import org.hibernate.annotations.ManyToAny;
+import java.math.BigInteger;
+import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 
 @Entity
 public class produtoModelo {
@@ -21,11 +15,21 @@ public class produtoModelo {
 	public Long id;
 	public String nome;
 	public String descricao;
-	public Float valorProduto;
+	public Float valorProdutoCompra;
+	public LocalDate dataCompra;
+	public BigInteger codigoBarras;
+	public Float valorVendaProduto;
+
 	
 	
 	
 	
+	public LocalDate getDataCompra() {
+		return dataCompra;
+	}
+	public void setDataCompra(LocalDate dataCompra) {
+		this.dataCompra = dataCompra;
+	}
 	public Long getId() {
 		return id;
 	}

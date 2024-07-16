@@ -1,5 +1,6 @@
 package com.example.demo.controle;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.modelo.produtoModelo;
 import com.example.demo.repositorio.produtoRepositorio;
+import com.example.demo.repositorio.produtoTop;
 import com.example.demo.service.produtoModeloService;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,8 +54,15 @@ public class produtoControle {
 	 }
 	 
 	 @GetMapping("/produtoTop")
-	 public ResponseEntity< List<produtoModelo[]>> getTopProdutos() {
-	        return ResponseEntity.ok(produtoModeloService.produtoTop());
+	 public ResponseEntity< List<produtoTop>> getTopProdutos() {
+		 /*List<Object> produtosObjetive =  produtoModeloService.produtoTop();
+
+		List<produtoModelo> produtosTeste = new ArrayList();
+		for(Object produto : produtosObjetive) {
+			produtosTeste.add(null) = produtosObjetive.get(i);
+		}
+*/
+	    return ResponseEntity.ok(produtoModeloService.produtoTopGrafico());
 	 }
 	 
 	 

@@ -1,8 +1,15 @@
+document.addEventListener('DOMContentLoaded', function() {
+  graficoVendas();
+  graficoPordutoTop();
+});
 
+
+
+function graficoVendas(){
 let valor =[]
 let data = []
 var xrf = new XMLHttpRequest();
-xrf.open("GET","http://localhost:8080/vendas/listar")
+xrf.open("GET","http://localhost:8080/vendas/totalVendidoPordia")
 xrf.setRequestHeader('Content-Type', 'application/json');
 xrf.send();
 xrf.onload = function(){
@@ -10,7 +17,7 @@ xrf.onload = function(){
         
         let vendas = JSON.parse(xrf.responseText);
         for(const vendas1 of vendas){
-            valor.push(vendas1.valorTotalDaVenda);
+            valor.push(vendas1.totalValorProduto);
             let date = new Date(vendas1.data);
             let formattedDate = date.toLocaleDateString('pt-BR', {
               day: '2-digit',
@@ -45,4 +52,49 @@ xrf.onload = function(){
 }
 
 }
+}
+function graficoPordutoTop(){
+let nomeProduto =[]
+let totalVendido = []
+var xrf = new XMLHttpRequest();
+xrf.open("GET","http://localhost:8080/produto/produtoTop")
+xrf.setRequestHeader('Content-Type', 'application/json');
+xrf.send();
+xrf.onload = function(){
+    if(xrf.status == 200){
+        
+        let produtoTop = JSON.parse(xrf.responseText);
+        for(const produtoTop1 of produtoTop){
+            nomeProduto.push(produtoTop1.nome);
+            totalVendido.push(produtoTop1.total)
+            
+            
+        }const ctx = document.getElementById('graficoProdutoTop');
+
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: nomeProduto,
+            datasets: [{
+              label: '# Produto mais vendido',
+              data: totalVendido,
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+
+}else{
+    alert("erro ao carrega o conteudo " + xrf.status)
+}
+
+}
+}
+
 

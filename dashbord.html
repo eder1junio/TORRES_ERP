@@ -13,27 +13,29 @@
         <h1>dashboard</h1>
     </div>
     <ul class="nav nav-pills">
-        <li  class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Cadastro</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="cadastroProdudo.html">Produto</a></li>
-            <li><a class="dropdown-item" href="#">Vendas</a></li>
-            <li><a class="dropdown-item" href="index.html">Home</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Relatório</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Produto</a></li>
-            <li><a class="dropdown-item" href="#">vendas por mês</a></li>
-            <li><a class="dropdown-item" href="#">Produto Mais vendido no Mês </a></li>
-          </ul>
-        </li>
-      </ul> 
-    <div id="conteudoDashboard">
+    <li  class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Cadastro</a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="cadastroProdudo.html">Produto</a></li>
+        <li><a class="dropdown-item" href="cadastroVendas.html">Vendas</a></li>
+        <li><a class="dropdown-item" href="dashbord.html">DashBord</a></li>
+        <li><a class="dropdown-item" href="index.html">Home</a></li>
+      </ul>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Relatório</a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Produto</a></li>
+        <li><a class="dropdown-item" href="#">vendas por mês</a></li>
+        <li><a class="dropdown-item" href="#">Produto Mais vendido no Mês </a></li>
+      </ul>
+    </li>
+  </ul>
+         <div id="conteudoDashboard">
         <Canvas id="graficoDia"></Canvas>
-    </div>
-    
+        <Canvas id="graficoProdutoTop"></Canvas>
+        </div>
+  
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

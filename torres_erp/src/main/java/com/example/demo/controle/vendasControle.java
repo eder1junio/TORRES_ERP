@@ -11,8 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.modelo.vendasModelo;
+import com.example.demo.repositorio.totalVendidoPorDia;
 import com.example.demo.repositorio.vendasRepositorio;
-
+import com.example.demo.service.vendasModeloService;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,6 +29,9 @@ public class vendasControle {
 	
 	@Autowired
 	vendasRepositorio repositorio;
+	
+	@Autowired
+	vendasModeloService servicos;
 	
 	@PostMapping("/cadastra")
 	public ResponseEntity<vendasModelo> cadastra(@RequestBody vendasModelo entity) {
@@ -52,6 +56,11 @@ public class vendasControle {
 		}	
 			
 	}
+	@GetMapping("/totalVendidoPordia")
+	public ResponseEntity<List<totalVendidoPorDia>>totalVendidoPordia() {
+		return ResponseEntity.ok(servicos.ListatotalVendidoPorDia());
+	}
+	
 	
 	
 
