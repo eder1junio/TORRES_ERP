@@ -11,6 +11,6 @@ import com.example.demo.modelo.fornecedorModelo;
 @Repository
 public interface fornecedorRepositorio extends JpaRepository<fornecedorModelo, Long>{
 	
-	@Query(value = "select * from fornecedor_modelo f where f.fornecedor like 'fornecedor%';",  nativeQuery = true)
+	@Query(value = "select * from fornecedor_modelo f where f.fornecedor like '%:fornecedor%';",  nativeQuery = true)
 	List<fornecedorModelo> obterFornecedor(String fornecedor);
 }

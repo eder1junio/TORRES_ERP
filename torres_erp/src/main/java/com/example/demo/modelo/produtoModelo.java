@@ -18,19 +18,13 @@ public class produtoModelo {
 	public String nome;
 	public String descricao;
 	public Float valorProdutoCompra;
-	public LocalDate dataCompra;
 	public BigInteger codigoBarras;
 	public Float valorVendaProduto;
 
 	
 	
 	
-	public LocalDate getDataCompra() {
-		return dataCompra;
-	}
-	public void setDataCompra(LocalDate dataCompra) {
-		this.dataCompra = dataCompra;
-	}
+
 	public Long getId() {
 		return id;
 	}

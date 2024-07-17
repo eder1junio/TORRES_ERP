@@ -34,54 +34,28 @@
           </ul>
         </li>
       </ul>
+
       <div id="conteudo">
         <div class="row">
             <div class="col">
-              <div class="card" style="width: 18rem;">
-                <img src="img/cadastro-de-produtos.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Cadastro de  Produdo </h5>
-                  <p class="card-text">Local para cadastra novo produtos.</p>
-                  <a href="cadastroProdudo.html" class="btn btn-primary">Cadastrar Produdo</a>
-                </div>
-              </div>
+                <label>Fornecedor</label>
+                <input type="text" class="form-control" placeholder="Fornecedor" aria-label="produto" id="nomeFornecedor"> 
             </div>
             <div class="col">
-              <div class="card" style="width: 18rem;">
-                <img src="img/cadastro-de-cliente.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Cadastro de Vendas </h5>
-                    <p class="card-text">Local para cadastra Vendas </p>
-                    <a href="cadastroVendas.html" class="btn btn-primary">Cadastrar Vendas </a>
-                  </div>
-                </div>
-              </div>  
-              <div class="col">
-                <div class="card" style="width: 18rem;">
-                  <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card" style="width: 18rem;">
-                  <img src="img/dashboard1.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Dashbord</h5>
-                      <p class="card-text">Dashbord para análise das vendas</p>
-                      <a href="dashbord.html" class="btn btn-primary">Dashbord</a>
-                    </div>
-                  </div>
-              </div>
-          </div>
-      </div>        
-                 
-     
-   
+                <label>Data Do Cadastro</label>
+                <input type="date" class="form-control" placeholder="Descrição" aria-label="Descrição" id="dataDoCadastro"> 
+            </div>
 
+        <div class="row" id="butao">
+            <div class="col">
+                <button type="button" class="btn btn-primary" onclick="salvaProduto()"><i class="bi bi-floppy-fill"></i> Salvar</button>
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-primary" onclick="limpa()"><i class="bi bi-x-lg"></i> Limpa </button>
+            </div>
+        </div>
+    </div>
+      
     
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 

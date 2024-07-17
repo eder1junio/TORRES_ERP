@@ -35,8 +35,8 @@ public class fornecedorControler {
 	}
 	
 	@GetMapping("/procuraFornecedor")
-	public ResponseEntity<List<fornecedorModelo>>obeterFornecedor (@RequestParam String fornecedor) {
-		return ResponseEntity.ok(servicosFornecedor.obterFornecedorServico(fornecedor));
+	public ResponseEntity<List<fornecedorModelo>>obeterFornecedor1 (@RequestParam String fornecedor2) {
+		return ResponseEntity.ok(servicosFornecedor.obterFornecedorServico(fornecedor2));
 	}
 	@PostMapping("/salva")
 	public ResponseEntity<fornecedorModelo>salvafornecedor(@RequestBody fornecedorModelo entity) {

@@ -15,8 +15,8 @@ public class fornecedorServicos {
 	fornecedorRepositorio fornecedorRepositorio;
 	
 	
-	public List<fornecedorModelo>obterFornecedorServico(String fornecedor){
-		return fornecedorRepositorio.obterFornecedor(fornecedor);
+	public List<fornecedorModelo>obterFornecedorServico(String fornecedor1){
+		return fornecedorRepositorio.obterFornecedor(fornecedor1);
 	}
 
 }
