@@ -15,8 +15,10 @@ public class fornecedorModelo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long id;
 	
-	public String forneceodor;
+	public String fornecedor;
 	public LocalDate dataCadastro;
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -24,10 +26,10 @@ public class fornecedorModelo {
 		this.id = id;
 	}
 	public String getForneceodor() {
-		return forneceodor;
+		return fornecedor;
 	}
-	public void setForneceodor(String forneceodor) {
-		this.forneceodor = forneceodor;
+	public void setForneceodor(String fornecedor) {
+		this.fornecedor = fornecedor;
 	}
 	public LocalDate getDataCadastro() {
 		return dataCadastro;
