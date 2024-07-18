@@ -11,6 +11,7 @@ import com.example.demo.modelo.fornecedorModelo;
 @Repository
 public interface fornecedorRepositorio extends JpaRepository<fornecedorModelo, Long>{
 	
+
 	@Query( "select f from fornecedorModelo f where f.fornecedor like %:fornecedor%")
 	List<fornecedorModelo> obterFornecedor(String fornecedor);
 }

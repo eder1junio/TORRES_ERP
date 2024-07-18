@@ -133,3 +133,7 @@ function adicionarProduto() {
         
     }
 }
+
+function salvaCompra(){
+    
+}
