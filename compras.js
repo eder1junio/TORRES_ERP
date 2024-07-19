@@ -141,10 +141,6 @@ function adicionarProduto() {
     }
 }
 
-function salvaCompra(){
-    
-}
-
 function selecionar(button){
     const row = button.parentElement.parentElement;
     const clonedRow = row.cloneNode(true);
