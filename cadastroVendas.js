@@ -25,12 +25,12 @@ function adicionarProduto() {
                 cont.innerHTML = 1
                 id.innerHTML = ` ${produto.id}`;
                 nomeProduto.innerHTML = ` ${produto.nome}`;
-                valor.innerHTML = ` ${produto.valorProduto}`;
+                valor.innerHTML = ` ${produto.valorVendaProduto}`;
                 botao.innerHTML = `<button type="button" class="btn btn-primary" onclick="selecionar(this)"id="botao"><i class="bi bi-floppy-fill"></i> deletar</button>`;
             }
             var totalElemento = document.getElementById("totalVenda").value;
             var total = parseFloat(totalElemento)|| 0
-            var preco = parseFloat(produto.valorProduto);
+            var preco = parseFloat(produto.);
             total = total + preco;
             document.getElementById("totalVenda").value = total.toFixed(2)
 

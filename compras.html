@@ -59,7 +59,9 @@
           <label for="fornecedorAutoComplete">Fornecedor </label>      
        </div>
         <div class="col">
+                <input type="text" class="form-control" placeholder="CodigoBarras" aria-label="fornecedor" id="fornecedorid" > 
                 <input type="text" class="form-control" placeholder="CodigoBarras" aria-label="fornecedor" id="fornecedorAutoComplete" onkeyup="autocomplet()" > 
+
                 <div id="suggestions-list" class="autocomplete-suggestions"></div>
         </div>
         <div class="col  ">
@@ -67,6 +69,7 @@
               
         </div>
         <div class="col  ">
+                <input type="number" class="form-control" placeholder="dataCadastro" aria-label="CodigoBarras" id="tipoPagamentoid"> 
                 <input type="text" class="form-control" placeholder="dataCadastro" aria-label="CodigoBarras" id="tipoPagamento" onkeyup="autocompletTipoPagamento()"> 
                 <div id="sugetaoLista" class="autocomplete-suggestions"></div>
         </div>
@@ -105,15 +108,19 @@
           </tbody>
         </table>
         <div class="row">
-          <div class="col d-flex justify-content-end">
-                  <label for="autocomplete-input">Valor Total Dos Produtos </label>
-                  <input type="number" class="form-control w-25" placeholder="dataCadastro" aria-label="CodigoBarras" id="valorTotalProduto"  >
-                  
+          <div class="col">
+                  <label for="valorTotalProduto">Valor Total Dos Produtos </label>
+
           </div>
+          <div class="col">
+  
+            <input type="number" class="form-control w-25" placeholder="dataCadastro" aria-label="CodigoBarras" id="valorTotalProduto"  >
+            
+            </div>
       </div>
       <div class="row" id="butao">
         <div class="col">
-            <button type="button" class="btn btn-primary" onclick="salvaFornecedor()"><i class="bi bi-floppy-fill"></i> Salvar</button>
+            <button type="button" class="btn btn-primary" onclick=" salvaCompra()"> Salvar</button>
         </div>
         <div class="col">
             <button type="button" class="btn btn-primary" onclick="openModal()" ><i class="bi bi-x-lg"></i> Limpa </button>
@@ -135,7 +142,8 @@
                     <th scope="col">#</th>
                     <th scope="col">id</th>
                     <th scope="col">nome</th>
-                    <th scope="col">valor</th>
+                    <th scope="col">valor de compra </th>
+                    <th scope="col">valor para vendas</th>
                     <th scope="col">ação</th>
                   </tr>
                 </thead>

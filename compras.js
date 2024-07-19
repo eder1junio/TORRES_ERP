@@ -15,7 +15,9 @@ function autocomplet() {
                     suggestionItem.className = 'autocomplete-suggestion';
                     suggestionItem.textContent = item.fornecedor;
                     suggestionItem.addEventListener('click', function() {
+                        document.getElementById('fornecedorid').value = item.id;
                         document.getElementById('fornecedorAutoComplete').value = item.fornecedor;
+
                         suggestionsList.innerHTML = '';
                     });
                     suggestionsList.appendChild(suggestionItem);
@@ -43,6 +45,7 @@ function autocompletTipoPagamento(){
                 sugetaoItem.textContent = item.tipoPagamento;
                 sugetaoItem.addEventListener('click', function(){
                     document.getElementById("tipoPagamento").value = item.tipoPagamento;
+                    document.getElementById("tipoPagamentoid").value = item.id;
                     sugetaoListajs.innerHTML = '';
 
                 })
@@ -79,18 +82,20 @@ function adicionarProduto() {
                 var id = novaLinha.insertCell(1);
                 var nomeProduto = novaLinha.insertCell(2);
                 var valor = novaLinha.insertCell(3);
-                var botao = novaLinha.insertCell(4);
+                var valorRevenda = novaLinha.insertCell(4);
+                var botao = novaLinha.insertCell(5);
                 cont.innerHTML = 1
                 id.innerHTML = ` ${produto.id}`;
                 nomeProduto.innerHTML = ` ${produto.nome}`;
-                valor.innerHTML = ` ${produto.valorProduto}`;
-                botao.innerHTML = `<button type="button" class="btn btn-primary" onclick="selecionar(this)"id="botao"><i class="bi bi-floppy-fill"></i> deletar</button>`;
+                valor.innerHTML = ` ${produto.valorProdutoCompra}`;
+                valorRevenda.innerHTML = `${produto.valorVendaProduto}`;
+                botao.innerHTML = `<button type="button" class="btn btn-primary" onclick="selecionar(this)"id="botao"><i class="bi bi-floppy-fill"></i>Selecionar</button>`;
             }
-            var totalElemento = document.getElementById("totalVenda").value;
+            var totalElemento = document.getElementById("valorTotalProduto").value;
             var total = parseFloat(totalElemento)|| 0
-            var preco = parseFloat(produto.valorProduto);
+            var preco = parseFloat(produto.valorProdutoCompra);
             total = total + preco;
-            document.getElementById("totalVenda").value = total.toFixed(2)
+            document.getElementById("valorTotalProduto").value = total.toFixed(2)
 
         } else {
             alert('Erro ao buscar produto: ' + xrf.statusText);
@@ -113,18 +118,20 @@ function adicionarProduto() {
             var id = novaLinha.insertCell(1);
             var nomeProduto = novaLinha.insertCell(2);
             var valor = novaLinha.insertCell(3);
-            var botao = novaLinha.insertCell(4);
+            var valorRevenda = novaLinha.insertCell(4);
+            var botao = novaLinha.insertCell(5);
             cont.innerHTML = 1
             id.innerHTML = ` ${produto.id}`;
             nomeProduto.innerHTML = ` ${produto.nome}`;
-            valor.innerHTML = ` ${produto.valorProduto}`;
+            valor.innerHTML = ` ${produto.valorProdutoCompra}`;
+            valorRevenda.innerHTML = `${produto.valorVendaProduto}`;
             botao.innerHTML = `<button type="button" class="btn btn-primary" onclick="deletar(this)" id="botao"><i class="bi bi-floppy-fill"></i> deletar</button>`;
            
             var totalElemento = document.getElementById("totalVenda").value;
             var total = parseFloat(totalElemento)|| 0
-            var preco = parseFloat(produto.valorProduto);
+            var preco = parseFloat(produto.valorProdutoCompra);
             total = total + preco;
-            document.getElementById("totalVenda").value = total.toFixed(2)
+            document.getElementById("valorTotalProduto").value = total.toFixed(2)
 
         } else {
             alert('Erro ao buscar produto: ' + xrf.statusText);
@@ -136,4 +143,72 @@ function adicionarProduto() {
 
 function salvaCompra(){
     
+}
+
+function selecionar(button){
+    const row = button.parentElement.parentElement;
+    const clonedRow = row.cloneNode(true);
+    var celselecionada = clonedRow.cells[5];
+    celselecionada.innerHTML = '';
+    const novobotao = document.createElement('button')
+    novobotao.className = 'btn btn-primary';
+    novobotao.type = 'button';
+    novobotao.textContent = 'Deletar';
+    novobotao.onclick = function(){
+        deletar(this)
+    }
+    celselecionada.appendChild(novobotao);
+    const targetTable = document.getElementById('tabelaCompra').getElementsByTagName('tbody')[0];
+
+    targetTable.appendChild(clonedRow);
+
+    var totalElemento = document.getElementById("valorTotalProduto").value;
+            var total = parseFloat(totalElemento)|| 0
+            var preco = parseFloat(clonedRow.cells[3].textContent);
+            total = total + preco;
+            document.getElementById("valorTotalProduto").value = total.toFixed(2)
+
+
+}
+function deletar(botao){
+    const linha =  botao.parentNode.parentNode;
+var valor = parseFloat(linha.cells[3].innerText);
+linha.parentNode.removeChild(linha);
+
+linha.remove();
+var totalElemento = document.getElementById("valorTotalProduto").value;
+var total = parseFloat(totalElemento)|| 0
+total = total -valor;
+document.getElementById("valorTotalProduto").value = total.toFixed(2)
+
+}
+
+function salvaCompra(){
+    let fornecedpor = document.getElementById("fornecedorid").value;
+    let tipoPagamento = document.getElementById("tipoPagamentoid").value;
+    let dataCompra = document.getElementById("dataCompra").value;
+    let valorTotalProduto = document.getElementById("valorTotalProduto").value;
+    let tabelaProduto = document.getElementById("tabelaCompra").getElementsByTagName("tbody")[0];
+    let salvaCompra = {"fonercerdor":{"id":fornecedpor},"pagamento":{"id":tipoPagamento},"dataDaCompra":dataCompra,"valorTotlaDosProdutos":valorTotalProduto, "Produto":[]}
+    for(let i = 0; i < tabelaProduto.rows.length; i++){
+        let idproduto = tabelaProduto.rows[i];
+        let idprodutoCel = idproduto.cells[1].textContent
+        salvaCompra.Produto.push({"id":idprodutoCel})
+    }
+    let xrf = new XMLHttpRequest();
+    xrf.open("POST","http://localhost:8080/compras/salvar");
+    xrf.setRequestHeader('Content-Type', 'application/json');
+    xrf.send(JSON.stringify(salvaCompra));
+    xrf.onload = function(){
+        if(xrf.status == 200){
+            alert("cadastrado com sucesaso")
+
+        }else{
+            alert("erro ao cadastrar")
+        }
+    };
+
+
+
+
 }

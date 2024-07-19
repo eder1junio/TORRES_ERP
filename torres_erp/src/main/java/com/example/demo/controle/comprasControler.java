@@ -28,7 +28,7 @@ public class comprasControler {
 	
 	@PostMapping("/salvar")
 	public ResponseEntity<compraModelo>salvaCompra(@RequestBody compraModelo entity) {
-		for(produtoModelo produto:entity.getProduto()) {
+		/*for(produtoModelo produto:entity.getProduto()) {
 			Optional<produtoModelo> optionalProduto = produtoRepositorio.findById(produto.getId());
 			if (optionalProduto.isPresent()) {
 				produtoModelo produto1 = optionalProduto.get();
@@ -36,13 +36,15 @@ public class comprasControler {
 					produto1.setValorVendaProduto(produto.getValorVendaProduto());
 					produtoRepositorio.save(produto1);
 					
+				}else {
+					
+						
 				}
 			}
 			
-		}
+		}*/
 		
 		return ResponseEntity.ok(comprarepositorio.save(entity));
-		
 	}
 	
 	
