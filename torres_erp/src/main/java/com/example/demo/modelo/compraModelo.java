@@ -18,7 +18,7 @@ public class compraModelo {
 	public Long id;
 	
 	@ManyToOne
-	public fornecedorModelo fonercerdor;
+	public fornecedorModelo fonecerdor;
 	
 	@ManyToMany
 	List<produtoModelo>Produto;
@@ -34,11 +34,11 @@ public class compraModelo {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public fornecedorModelo getFonercerdor() {
-		return fonercerdor;
+	public fornecedorModelo getFonecerdor() {
+		return fonecerdor;
 	}
-	public void setFonercerdor(fornecedorModelo fonercerdor) {
-		this.fonercerdor = fonercerdor;
+	public void setFonecerdor(fornecedorModelo fonecerdor) {
+		this.fonecerdor = fonecerdor;
 	}
 	public List<produtoModelo> getProduto() {
 		return Produto;
@@ -64,8 +64,6 @@ public class compraModelo {
 	public void setValorTotlaDosProdutos(Float valorTotlaDosProdutos) {
 		this.valorTotlaDosProdutos = valorTotlaDosProdutos;
 	}
-	
-	
 	
 
 }

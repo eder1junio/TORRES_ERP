@@ -185,11 +185,11 @@ function salvaCompra(){
     let dataCompra = document.getElementById("dataCompra").value;
     let valorTotalProduto = document.getElementById("valorTotalProduto").value;
     let tabelaProduto = document.getElementById("tabelaCompra").getElementsByTagName("tbody")[0];
-    let salvaCompra = {"fonercerdor":{"id":fornecedpor},"pagamento":{"id":tipoPagamento},"dataDaCompra":dataCompra,"valorTotlaDosProdutos":valorTotalProduto, "Produto":[]}
+    let salvaCompra = {"fonecerdor":{"id":fornecedpor},"pagamento":{"id":tipoPagamento},"dataDaCompra":dataCompra,"valorTotlaDosProdutos":valorTotalProduto, "produto":[]}
     for(let i = 0; i < tabelaProduto.rows.length; i++){
         let idproduto = tabelaProduto.rows[i];
         let idprodutoCel = idproduto.cells[1].textContent
-        salvaCompra.Produto.push({"id":idprodutoCel})
+        salvaCompra.produto.push({"id":idprodutoCel})
     }
     let xrf = new XMLHttpRequest();
     xrf.open("POST","http://localhost:8080/compras/salvar");

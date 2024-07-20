@@ -28,12 +28,14 @@ function adicionarProduto() {
                 valor.innerHTML = ` ${produto.valorVendaProduto}`;
                 botao.innerHTML = `<button type="button" class="btn btn-primary" onclick="selecionar(this)"id="botao"><i class="bi bi-floppy-fill"></i> deletar</button>`;
             }
+
+            /*
             var totalElemento = document.getElementById("totalVenda").value;
             var total = parseFloat(totalElemento)|| 0
-            var preco = parseFloat(produto.);
+            var preco = parseFloat(produto.valorProdutoCompra);
             total = total + preco;
             document.getElementById("totalVenda").value = total.toFixed(2)
-
+               */ 
         } else {
             alert('Erro ao buscar produto: ' + xrf.statusText);
         }

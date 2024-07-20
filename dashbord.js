@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   graficoVendas();
   graficoPordutoTop();
+  graficoCompras();
 });
 
 
@@ -96,5 +97,49 @@ xrf.onload = function(){
 
 }
 }
+
+function graficoCompras(){
+  let nomeFornecedor =[]
+  let totalCompra = []
+  var xrf = new XMLHttpRequest();
+  xrf.open("GET","http://localhost:8080/compras/obterTotal")
+  xrf.setRequestHeader('Content-Type', 'application/json');
+  xrf.send();
+  xrf.onload = function(){
+      if(xrf.status == 200){
+          
+          let fornecedorTotalCompra = JSON.parse(xrf.responseText);
+          for(const fornecedor of fornecedorTotalCompra){
+              nomeFornecedor.push(fornecedor.fornecedor);
+              totalCompra.push(fornecedor.total)
+              
+              
+          }const ctx = document.getElementById('graficoCompras');
+  
+          new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: nomeFornecedor,
+              datasets: [{
+                label: '# Compras totais por Fonecedor ',
+                data: totalCompra,
+                borderWidth: 1
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+  
+  }else{
+      alert("erro ao carrega o conteudo " + xrf.status)
+  }
+  
+  }
+  }
 
 
