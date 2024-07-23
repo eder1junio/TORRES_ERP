@@ -2,7 +2,7 @@ function autocomplet() {
     let busca = document.getElementById('fornecedorAutoComplete').value;
     if (busca.length > 0) {
         let xhr = new XMLHttpRequest();
-        xhr.open('GET', 'http://localhost:8080/fornecedor/procuraFornecedor?fornecedor='+busca);
+        xhr.open('GET', 'http://54.207.192.147:8080/fornecedor/procuraFornecedor?fornecedor='+busca);
         xhr.setRequestHeader('Content-Type', 'application/json')
         xhr.send();
         xhr.onload = function() {
@@ -32,7 +32,7 @@ function autocompletTipoPagamento(){
     let buscaTipoPagamento = document.getElementById("tipoPagamento").value;
     if (buscaTipoPagamento.length> 0){
         let xhr = new XMLHttpRequest();
-        xhr.open('GET','http://localhost:8080/tipoPagamento/procura?tipoPagamento='+buscaTipoPagamento)
+        xhr.open('GET','http://54.207.192.147:8080/tipoPagamento/procura?tipoPagamento='+buscaTipoPagamento)
         xhr.setRequestHeader('Content-Type', 'application/json')
         xhr.send();
         xhr.onload = function(){
@@ -65,7 +65,7 @@ function adicionarProduto() {
     var idConvertido = Number(id)
     if (isNaN(idConvertido)) {
     var xrf = new XMLHttpRequest();    
-    xrf.open('GET','http://localhost:8080/produto/procuranome?nome='+id)
+    xrf.open('GET','http://54.207.192.147:8080/produto/procuranome?nome='+id)
     xrf.setRequestHeader('Content-Type', 'application/json')
     xrf.send();
     xrf.onload = function() {
@@ -105,7 +105,7 @@ function adicionarProduto() {
     }else{
     
     var xrf = new XMLHttpRequest();
-    xrf.open('GET','http://localhost:8080/produto/procurar?id='+id)
+    xrf.open('GET','http://54.207.192.147:8080/produto/procurar?id='+id)
     xrf.setRequestHeader('Content-Type', 'application/json')
     xrf.send();
     xrf.onload = function() {
@@ -192,7 +192,7 @@ function salvaCompra(){
         salvaCompra.produto.push({"id":idprodutoCel})
     }
     let xrf = new XMLHttpRequest();
-    xrf.open("POST","http://localhost:8080/compras/salvar");
+    xrf.open("POST","http://54.207.192.147:8080/compras/salvar");
     xrf.setRequestHeader('Content-Type', 'application/json');
     xrf.send(JSON.stringify(salvaCompra));
     xrf.onload = function(){

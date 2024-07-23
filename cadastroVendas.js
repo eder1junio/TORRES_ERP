@@ -4,7 +4,7 @@ function adicionarProduto() {
     var idConvertido = Number(id)
     if (isNaN(idConvertido)) {
     var xrf = new XMLHttpRequest();    
-    xrf.open('GET','http://localhost:8080/produto/procuranome?nome='+id)
+    xrf.open('GET','http://54.207.192.147:8080/produto/procuranome?nome='+id)
     xrf.setRequestHeader('Content-Type', 'application/json')
     xrf.send();
     xrf.onload = function() {
@@ -44,7 +44,7 @@ function adicionarProduto() {
     }else{
     
     var xrf = new XMLHttpRequest();
-    xrf.open('GET','http://localhost:8080/produto/procurar?id='+id)
+    xrf.open('GET','http://54.207.192.147:8080/produto/procurar?id='+id)
     xrf.setRequestHeader('Content-Type', 'application/json')
     xrf.send();
     xrf.onload = function() {
@@ -137,7 +137,7 @@ function salvaVenda(){
     cadastroVenda.produto.push({"id":idProduto});
     }
     var xrf = new XMLHttpRequest();
-    xrf.open('POST','http://localhost:8080/vendas/cadastra');
+    xrf.open('POST','http://54.207.192.147:8080/vendas/cadastra');
     xrf.setRequestHeader('Content-Type', 'application/json');
     xrf.send(JSON.stringify(cadastroVenda));
      xrf.onload = function() {

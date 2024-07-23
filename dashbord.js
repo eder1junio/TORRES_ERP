@@ -10,7 +10,7 @@ function graficoVendas(){
 let valor =[]
 let data = []
 var xrf = new XMLHttpRequest();
-xrf.open("GET","http://localhost:8080/vendas/totalVendidoPordia")
+xrf.open("GET","http://54.207.192.147:8080/vendas/totalVendidoPordia")
 xrf.setRequestHeader('Content-Type', 'application/json');
 xrf.send();
 xrf.onload = function(){
@@ -58,7 +58,7 @@ function graficoPordutoTop(){
 let nomeProduto =[]
 let totalVendido = []
 var xrf = new XMLHttpRequest();
-xrf.open("GET","http://localhost:8080/produto/produtoTop")
+xrf.open("GET","http://54.207.192.147:8080/produto/produtoTop")
 xrf.setRequestHeader('Content-Type', 'application/json');
 xrf.send();
 xrf.onload = function(){
@@ -102,7 +102,7 @@ function graficoCompras(){
   let nomeFornecedor =[]
   let totalCompra = []
   var xrf = new XMLHttpRequest();
-  xrf.open("GET","http://localhost:8080/compras/obterTotal")
+  xrf.open("GET","http://54.207.192.147:8080/compras/obterTotal")
   xrf.setRequestHeader('Content-Type', 'application/json');
   xrf.send();
   xrf.onload = function(){

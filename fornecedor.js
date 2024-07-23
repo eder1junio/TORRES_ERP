@@ -3,7 +3,7 @@ function salvaFornecedor(){
     let dataCadastro = document.getElementById("dataCadastro").value;
     let jsonFornecedor = {"fornecedor":fornecedor,"dataCadastro":dataCadastro};
     let xrf = new XMLHttpRequest();
-    xrf.open("POST","http://localhost:8080/fornecedor/salva");
+    xrf.open("POST","http://54.207.192.147:8080/fornecedor/salva");
     xrf.setRequestHeader('Content-Type', 'application/json');
     xrf.send(JSON.stringify(jsonFornecedor))
     xrf.onload = function(){

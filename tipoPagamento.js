@@ -2,7 +2,7 @@ function salvaTipoPagamento(){
     let tipoPagamento = document.getElementById("tipoPagamento").value;
     let jsonTipoPagamento = {"tipoPagamento":tipoPagamento}
     let  xrf = new XMLHttpRequest(); 
-    xrf.open("POST","http://localhost:8080/tipoPagamento/salvar")
+    xrf.open("POST","http://54.207.192.147:8080/tipoPagamento/salvar")
     xrf.setRequestHeader('Content-Type', 'application/json');
     xrf.send(JSON.stringify(jsonTipoPagamento));
     xrf.onload = function(){

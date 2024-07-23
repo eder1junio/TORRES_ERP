@@ -6,7 +6,7 @@ function salvaProduto(){
     let CodigoBarras = document.getElementById("CodigoBarras").value;
     var produto = {"nome":nome,"descricao":descricao,"valorProdutoCompra":valorCcompra,"valorVendaProduto": valorRevenda,"codigoBarras":CodigoBarras}
     var xhr = new XMLHttpRequest;
-    xhr.open("POST","http://localhost:8080/produto/cadastra")
+    xhr.open("POST","http://54.207.192.147:8080/produto/cadastra")
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(produto));
     xhr.onload = function() {
