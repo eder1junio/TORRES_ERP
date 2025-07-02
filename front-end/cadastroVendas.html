@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3">
-        <h1>Cadastro De Produto</h1>
+        <h1>Vendas</h1>
     </div>
       <ul class="nav nav-pills">
         <li  class="nav-item dropdown">
@@ -57,7 +57,7 @@
                 <input type="text" class="form-control" placeholder="Descrição" aria-label="data" id="id"> 
             </div>
             <div class="col">
-              <button type="button" class="btn btn-primary" onclick="adicionarProduto()"><i class="bi bi-floppy-fill"></i> adicionar</button>
+              <button type="button" class="btn btn-primary" onclick="procuraProduto()"><i class="bi bi-floppy-fill"></i> adicionar</button>
           </div>
             
         </div>
@@ -65,10 +65,11 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">id</th>
-                <th scope="col">nome</th>
-                <th scope="col">valor</th>
-                <th scope="col">ação</th>
+                    <th scope="col">id</th>
+                    <th scope="col">nome</th>
+                    <th scope="col">valor do produto</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">ação</th>
               </tr>
             </thead>
             <tbody>
@@ -93,37 +94,6 @@
             </div>
         </div>
     </div>
-
-  
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <table class="table table-bordered border-black" id="produtosTableModal">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">id</th>
-                    <th scope="col">nome</th>
-                    <th scope="col">valor</th>
-                    <th scope="col">ação</th>
-                  </tr>
-                </thead>
-                <tbody>
-    
-                </tbody>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
     
 </body>
 <script src="cadastroVendas.js"></script>

@@ -78,7 +78,7 @@ async function buscaProdutoID() {
     }
 
     try {
-        const resposta = await fetch(`http://35.233.132.93:8080/produto/${id}`);
+        const resposta = await fetch(`http://localhost:8080/produto/buscar/${id}`);
 
         if (resposta.ok) {
             const produto = await resposta.json();
@@ -86,8 +86,8 @@ async function buscaProdutoID() {
             // Preenche os campos do formulário com os dados
             document.getElementById("nomeProduto").value = produto.nome || "";
             document.getElementById("descricaoProdudo").value = produto.descricao || "";
-            document.getElementById("valor").value = produto.precoCompra || "";
-            document.getElementById("valorRevenda").value = produto.precoVenda || "";
+            document.getElementById("valor").value = produto.valorCompra || "";
+            document.getElementById("valorRevenda").value = produto.valorVenda || "";
             document.getElementById("CodigoBarras").value = produto.codigoBarras || "";
 
         } else if (resposta.status === 404) {
