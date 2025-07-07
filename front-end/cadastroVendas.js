@@ -95,39 +95,71 @@ async function procuraProduto() {
 }
 
 async function gerarPDF(){
-    const {jsPDF} = windowindow.jspdf;
+    const {jsPDF} = window.jspdf;
     const doc = new jsPDF();
 
     try{
-        const resposta = await fetch(`http://35.233.132.93:8080/venda/listar`);
-        const vendas = await resposta.json
-        doc.setFontSize(16);
-        doc.text("Lista de Vendas ")
-        let y = 20;
-        
+        const resposta = await fetch(`http://localhost:8080/venda/listar`);
+        const vendas = await resposta.json();
+         if (!Array.isArray(vendas)) {
+            throw new Error("Resposta da API não é uma lista de vendas.");
+        }
+        doc.setFontSize(18);
+        doc.text("Relatório de Vendas ",105,15,{align:"center"})
+        let y = 25;
+     
         for( const venda of vendas){
+
+             if(y > 270){
+                    doc.addPage();
+                    y = 10;
+                }
+            
+            
             doc.setFontSize(12);
-            doc.text(`Venda ID:${venda.id}`)
-            y+=6;
+            let dataFormatada = "Data não informada";
+            if (Array.isArray(venda.dataVenda)) {
+                const [ano, mes, dia] = venda.dataVenda;
+                dataFormatada = `${String(dia).padStart(2, '0')}/${String(mes).padStart(2, '0')}/${ano}`;
+            }
+             const total = typeof venda.valorVenda === 'number' ? `R$ ${venda.valorVenda.toFixed(2)}` : "R$ 0,00";
+
+           doc.text(`Venda ID: ${venda.id} | Data: ${dataFormatada} | Total: ${total}`, 10, y);
+            y += 8;
+            if (!Array.isArray(venda.produtos) || venda.produtos.length === 0) {
+                doc.setFontSize(10);
+                doc.text("Nenhum produto nesta venda.", 10, y);
+                y += 10;
+                continue;
+            }
+
+              
            
-                const dadosTabela = produto.map(prod =>([
-                    prod.nome,
-                    prod.quantidade,
-                    `R$ ${prod.precoVenda.toFixed(2)}`
+                const dadosTabela = venda.produtos.map(prod =>([
+                    prod.nome ?? 'Produto sem Nome',
+                    String(prod.quantidade ?? 0),
+                    `R$ ${(prod.precoUnitario?? 0 ).toFixed(2)}`
                 ]));
                 doc.autoTable({
                     startY: y,
                     heard:[['Porduto', 'Quantidade', 'Preço de Venda']],
                     body:dadosTabela,
-                    styles:{ fontSize: 10},
+                    styles:{ fontSize: 10,
+                        cellPadding:2
+                    },
                     margin:{left:10, right:10},
-                    theme:'grid'
+                    theme:'striped',
+                    headSyles:{
+                        fillCollor:[41,128,185],
+                        textColor:255,
+                        halign:'center'
+                    },
+                    bodyStyles:{
+                        halign:'center'
+                    }
                 });
+                 y = doc.autoTable.previous.finalY + 10;
 
-                if(y > 270){
-                    doc.addPag();
-                    y = 10;
-                }
             }
         
         doc.save("Relatorio_DE_VENDAS.pdf");

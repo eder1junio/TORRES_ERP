@@ -1,5 +1,6 @@
 package com.empresatorressntos.inicio.modelo;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -23,7 +24,18 @@ public class CadastroFornecedor {
 	@Column
 	private String nome;
 	
-	 @OneToMany(mappedBy = "fornecedor")
+	@Column
+	private LocalDate dataCadastro;
+	
+	 public LocalDate getDataCadastro() {
+		return dataCadastro;
+	}
+
+	public void setDataCadastro(LocalDate dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
+
+	@OneToMany(mappedBy = "fornecedor")
 	 @JsonIgnore
 	 private List<CadastroCompra> compras;
 

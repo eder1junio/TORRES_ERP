@@ -23,3 +23,13 @@ async function salvaFornecedor() {
      alert("erro ao envia os dados"+erro.message)
     }
 }
+
+async function listaFornecedor() {
+    const {jsPDF}= window.jsPDF;
+    const doc= new jsPDF();
+
+    try{
+        const resposta = await fetch
+    }
+    
+}
