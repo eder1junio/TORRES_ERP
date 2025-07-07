@@ -93,3 +93,48 @@ async function procuraProduto() {
     }
     
 }
+
+async function gerarPDF(){
+    const {jsPDF} = windowindow.jspdf;
+    const doc = new jsPDF();
+
+    try{
+        const resposta = await fetch(`http://35.233.132.93:8080/venda/listar`);
+        const vendas = await resposta.json
+        doc.setFontSize(16);
+        doc.text("Lista de Vendas ")
+        let y = 20;
+        
+        for( const venda of vendas){
+            doc.setFontSize(12);
+            doc.text(`Venda ID:${venda.id}`)
+            y+=6;
+           
+                const dadosTabela = produto.map(prod =>([
+                    prod.nome,
+                    prod.quantidade,
+                    `R$ ${prod.precoVenda.toFixed(2)}`
+                ]));
+                doc.autoTable({
+                    startY: y,
+                    heard:[['Porduto', 'Quantidade', 'Preço de Venda']],
+                    body:dadosTabela,
+                    styles:{ fontSize: 10},
+                    margin:{left:10, right:10},
+                    theme:'grid'
+                });
+
+                if(y > 270){
+                    doc.addPag();
+                    y = 10;
+                }
+            }
+        
+        doc.save("Relatorio_DE_VENDAS.pdf");
+
+        
+    }catch(erro){
+        console.error("Erro ao gerar o PDF:", erro);
+
+    }
+}
