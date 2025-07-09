@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="index.css"/>
     <title>Torres ERP</title>
 </head>
+<script src="fornecedor.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
 <body>
@@ -48,13 +49,13 @@
       </div>
       <div class="row" id="butao">
         <div class="col">
-            <button type="button" class="btn btn-primary" onclick="salvaFornecedor()"><i class="bi bi-floppy-fill"></i> Salvar</button>
+            <button type="button" class="btn btn-primary" onclick="salvaFornecedor()"><i class="bi bi-x-lg"></i> Salvar</button>
         </div>
         <div class="col">
             <button type="button" class="btn btn-primary" onclick="openModal()" ><i class="bi bi-x-lg"></i> Limpa </button>
         </div>
         <div class="col">
-            <button type="button" class="btn btn-primary" onclick="openModal()" ><i class="bi bi-x-lg"></i> Todos fornecedor </button>
+            <button type="button" class="btn btn-primary" onclick="listaFornecedor()" ><i class="bi bi-x-lg"></i> Todos fornecedor </button>
         </div>
     </div>
       
@@ -62,5 +63,5 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<script src="fornecedor.js"></script>
+
 </html>
