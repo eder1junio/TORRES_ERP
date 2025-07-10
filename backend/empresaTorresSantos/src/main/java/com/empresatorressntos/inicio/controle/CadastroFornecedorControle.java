@@ -46,5 +46,15 @@ public class CadastroFornecedorControle {
 		}
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body("fornecedor não encontrado");
 	}
-	
+	@DeleteMapping("deletar/{id}")
+	public ResponseEntity<?> deletarFornecedor(@PathVariable Long id) {
+	   
+	    if (!repositorio.existsById(id)) {
+	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Fornecedor não encontrado");
+	    }
+
+	  
+	    repositorio.deleteById(id);
+	    return ResponseEntity.ok("Fornecedor deletado com sucesso");
+	}
 }

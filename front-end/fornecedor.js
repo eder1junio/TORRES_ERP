@@ -49,7 +49,7 @@ async function listaFornecedor() {
                 const[ano,mes,dia]=fornecedor.dataCadastro;
                 dataFormatada = `${String(dia).padStart(2, '0')}/${String(mes).padStart(2, '0')}/${ano}`;
             }
-            doc.text(`Nome Fornecedor: ${fornecedor.nome}| Data do cadastro  : ${dataFormatada}`,10,y)
+            doc.text(`id do fornecedor ${fornecedor.id} | Nome Fornecedor: ${fornecedor.nome}| Data do cadastro  : ${dataFormatada}`,10,y)
             y+= 8 ;
 
         }
@@ -61,4 +61,27 @@ async function listaFornecedor() {
         console.error("Erro ao gerar o PDF:", erro);
     }
     
+}
+
+async function deletarFornecedor() {
+    const id = document.getElementById("id").value.trim();
+    if (!id) {
+    alert("Informe um ID válido");
+    return;
+  }
+
+    try{
+        if (!confirm(`Deseja realmente excluir o fornecedor de ID ${id}?`)) return;
+        const resposta = await fetch(`http://localhost:8080/fornecedor/deletar/${id}`,
+          {   method: 'DELETE',
+            })
+      if (!resposta.ok) {
+      const erroTexto = await resposta.text(); 
+      throw new Error(erroTexto || 'Erro ao deletar fornecedor');
+    }       
+
+    }catch(erro){
+        alert("erro ao deletar", erro.message);
+           
+    }
 }

@@ -11,7 +11,7 @@ async function salvaProduto(){
         codigoBarras:CodigoBarras};
 
         try{
-            const resposta = await fetch("http://localhost:8080/produto/cadastro",{
+            const resposta = await fetch("http://35.233.132.93:8080/produto/cadastro",{
             method: "POST",
             headers:{
               "Content-Type": "application/json"
@@ -78,7 +78,7 @@ async function buscaProdutoID() {
     }
 
     try {
-        const resposta = await fetch(`http://localhost:8080/produto/buscar/${id}`);
+        const resposta = await fetch(`http://35.233.132.93:8080/produto/buscar/${id}`);
 
         if (resposta.ok) {
             const produto = await resposta.json();

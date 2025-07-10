@@ -39,13 +39,18 @@
     </ul>
       <div class="row">
         <div class="col">
+            <label>Id</label>
+                <input type="text" class="form-control" placeholder="id" aria-label="id" id="id"> 
+        </div>
+        <div class="col">
             <label>Fornecedor </label>
-                <input type="text" class="form-control" placeholder="CodigoBarras" aria-label="fornecedor" id="fornecedor" > 
+                <input type="text" class="form-control" placeholder="Nome Do Fornecedor" aria-label="fornecedor" id="fornecedor" > 
         </div>
         <div class="col">
             <label>Data de Cadastro</label>
-                <input type="date" class="form-control" placeholder="dataCadastro" aria-label="CodigoBarras" id="dataCadastro"> 
+                <input type="date" class="form-control" placeholder="dataCadastro" aria-label="dataCadastro" id="dataCadastro"> 
         </div>
+         
       </div>
       <div class="row" id="butao">
         <div class="col">
@@ -56,6 +61,9 @@
         </div>
         <div class="col">
             <button type="button" class="btn btn-primary" onclick="listaFornecedor()" ><i class="bi bi-x-lg"></i> Todos fornecedor </button>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-primary" onclick="deletarFornecedor()" ><i class="bi bi-x-lg"></i> Deletar</button>
         </div>
     </div>
       
