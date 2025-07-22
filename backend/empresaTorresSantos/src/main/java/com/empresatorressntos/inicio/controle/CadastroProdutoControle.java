@@ -15,6 +15,7 @@ import com.empresatorressntos.inicio.modelo.CadastroProduto;
 import com.empresatorressntos.inicio.repositorio.cadastroProdutoRepositorio;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -51,4 +52,18 @@ public class CadastroProdutoControle {
 
 			    return ResponseEntity.ok(dto);
 			}
+	
+	@DeleteMapping("deletar/{id}")
+	public ResponseEntity<?>deletarProduto(@PathVariable Long id){
+		if(!repositorio.existsById(id)) {
+			return ResponseEntity.ok("id nao encontrador");
+			
+			
+		}else {
+			repositorio.deleteById(id);
+			return ResponseEntity.ok("id deletado");
+		}
+	
+		
+	}
 }

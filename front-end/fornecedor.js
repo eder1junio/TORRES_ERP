@@ -75,6 +75,9 @@ async function deletarFornecedor() {
         const resposta = await fetch(`http://localhost:8080/fornecedor/deletar/${id}`,
           {   method: 'DELETE',
             })
+       if(resposta.ok){
+        
+       }     
       if (!resposta.ok) {
       const erroTexto = await resposta.text(); 
       throw new Error(erroTexto || 'Erro ao deletar fornecedor');

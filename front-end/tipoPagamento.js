@@ -1,18 +1,58 @@
-function salvaTipoPagamento(){
-    let tipoPagamento = document.getElementById("tipoPagamento").value;
-    let jsonTipoPagamento = {"tipoPagamento":tipoPagamento}
-    let  xrf = new XMLHttpRequest(); 
-    xrf.open("POST","http://54.207.192.147:8080/tipoPagamento/salvar")
-    xrf.setRequestHeader('Content-Type', 'application/json');
-    xrf.send(JSON.stringify(jsonTipoPagamento));
-    xrf.onload = function(){
-        if(xrf.status == 200){
-            alert("cadastro realizado com sucesso")
+async function salvaTipoPagamento(){
+    const tipoPagamento = document.getElementById("tipoPagamento").value.trim();
+    const jsonTipoPagamento = {"tipoPagamento":tipoPagamento}
+    try {
+        const resposta = await fetch(`${API_URL}/tipoPagamento/cadastra`,
+            {method: "POST",
+                headers:{"Content-Type": "application/json"},
+                body:JSON.stringify(jsonTipoPagamento)
 
-        }else{
-            alert("erro ao cadastra",xrf.statusText)
-        }
+
+            });
+         if(resposta.ok){
+            alert("Salvo com sucesso")
+         }
+
+
+        
+    } catch (error) {
+         alert("Erro de rede: " + error.message);
+        console.error("Erro ao salvar o tipo de pagamento:", erro);
+        
+    }
 
 }
-    document.getElementById("tipoPagamento").value = "";
+async function listaTipoPagamento() {
+     const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    try {
+        const resposta = await fetch(`${API_URL}/tipoPagamento/lista`)
+        const tipoPagamento = await resposta.json();
+
+        doc.setFontSize(16);
+        doc.text("Lista tipo de Pagamento", 10, 10);
+        const head = [['#','id','tipo de Pagamento']];
+        const body = tipoPagamento.map((tipoPagamento,index)=>[index +1,
+            tipoPagamento.id,
+            tipoPagamento.tipoPagamento
+        ]);
+        doc.autoTable({
+            startY:20,
+            head:head,
+            body:body,
+            styles:{fontSize:12},
+            headStyles: { fillColor: [22, 160, 133] }, // cor verde-azulada
+
+
+        })
+
+        doc.save('tipoPagamento.pdf');
+
+
+    } catch (error) {
+         alert("Erro ao gerar PDF: " + erro.message);
+        
+    }
+    
 }

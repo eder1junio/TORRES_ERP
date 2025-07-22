@@ -11,7 +11,7 @@ async function salvaProduto(){
         codigoBarras:CodigoBarras};
 
         try{
-            const resposta = await fetch("http://35.233.132.93:8080/produto/cadastro",{
+            const resposta = await fetch(`${API_URL}/produto/cadastro`,{
             method: "POST",
             headers:{
               "Content-Type": "application/json"
@@ -27,8 +27,9 @@ async function salvaProduto(){
 
         }
 
-        } catch (erro) {
-            alert("Erro de rede: " + erro.message);
+        } catch (error)
+         {
+            alert("Erro de rede: " + error.message);
             console.error("Erro ao salvar produto:", erro);
         }
    
@@ -44,7 +45,7 @@ async function salvaProduto(){
 }
 async function exibirCatálogo(){
     try{
-        const resposta = await fetch("http://35.233.132.93:8080/produto/listar");
+        const resposta = await fetch(`${API_URL}/produto/listar`);
         const produto = await resposta.json();
         const tabela = document.querySelector("#tabelaProdutos tbody");
         tabela.innerHTML="";
@@ -72,18 +73,18 @@ async function exibirCatálogo(){
 async function buscaProdutoID() {
     const id = document.getElementById("IDProduto").value.trim();
    
-    if (id === "") {
+    if (id === " ") {
         alert("Digite um ID válido para buscar.");
         return;
     }
 
     try {
-        const resposta = await fetch(`http://35.233.132.93:8080/produto/buscar/${id}`);
+        const resposta = await fetch(`${API_URL}/produto/buscar/${id}`);
 
         if (resposta.ok) {
             const produto = await resposta.json();
 
-            // Preenche os campos do formulário com os dados
+           
             document.getElementById("nomeProduto").value = produto.nome || "";
             document.getElementById("descricaoProdudo").value = produto.descricao || "";
             document.getElementById("valor").value = produto.valorCompra || "";
@@ -108,7 +109,7 @@ async function gerarPDF() {
     const doc = new jsPDF();
 
     try {
-        const resposta = await fetch("http://35.233.132.93:8080/produto/listar");
+        const resposta = await fetch(`${API_URL}/produto/listar`);
         const produtos = await resposta.json();
 
         doc.setFontSize(16);

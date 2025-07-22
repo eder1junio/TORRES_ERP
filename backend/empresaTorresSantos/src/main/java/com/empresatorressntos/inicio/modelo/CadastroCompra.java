@@ -60,6 +60,9 @@ public class CadastroCompra {
 	        .map(ItemsCompra::getSubtotal)
 	        .reduce(BigDecimal.ZERO, BigDecimal::add);
 	}
+	@ManyToOne
+	@JoinColumn(name = "tipoPagamento_id")
+	private TipoPagamento tipoPagamento;
 	
 	public Long getId() {
 		return id;
