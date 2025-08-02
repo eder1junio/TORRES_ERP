@@ -32,7 +32,7 @@ async function salvaVenda(){
     cadastroVenda.produto.push({"produtoID":idProduto,"quantidade":quantidadeProduto,"precoUnitario":valorVenda});
     }
     try{
-        const resposta = await fetch(`http://35.233.132.93:8080/venda/cadastra`,
+        const resposta = await fetch(`${API_URL}/venda/cadastra`,
             {method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(cadastroVenda,)
@@ -61,7 +61,7 @@ async function procuraProduto() {
     }
 
     try{
-        const resposta = await fetch(`http://35.233.132.93:8080/produto/buscar/${campoid}`);
+        const resposta = await fetch(`${API_URL}/produto/buscar/${campoid}`);
         if(!resposta.ok){
             alert(`Produto com ID ${campoid} não encontrado.`);
         }
@@ -99,7 +99,7 @@ async function gerarPDF(){
     const doc = new jsPDF();
 
     try{
-        const resposta = await fetch(`http://localhost:8080/venda/listar`);
+        const resposta = await fetch(`${API_URL}/venda/listar`);
         const vendas = await resposta.json();
          if (!Array.isArray(vendas)) {
             throw new Error("Resposta da API não é uma lista de vendas.");
