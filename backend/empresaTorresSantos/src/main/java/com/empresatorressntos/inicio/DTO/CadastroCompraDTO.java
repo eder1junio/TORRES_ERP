@@ -21,16 +21,16 @@ public class CadastroCompraDTO {
 		
 		@NotNull(message = "O valor é obrigatório")
 		@Positive(message = "O valor deve ser positivo")
-	    private BigDecimal valorCompra;
+	    public BigDecimal valorCompra;
 		
 		@NotNull(message = "A data da compra é obrigatória")
 		@DateTimeFormat(pattern = "yyyy-MM-dd")
-	    private LocalDate dataCompra;
+	    public LocalDate dataCompra;
 		
 		@NotNull(message = "O ID do fornecedor é obrigatório")
-	    private Long fornecedorId;
+	    public Long fornecedorId;
 		
-		private List<ItensCompraDTO>produto;
+		public List<ItensCompraDTO>produto;
 		
 		 public CadastroCompraDTO() {
 		    }
