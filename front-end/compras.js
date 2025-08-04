@@ -62,16 +62,14 @@ function autocompletTipoPagamento(){
 
 async function adicionarProduto() {
     const id = document.getElementById("idProduto").value.trim();
-    if(id === " "){
+    if(!id || /^0+$/.test(id)){
         alert("O campo nao pode esta em branco")
         return;
     };
     try {
         const resposta = await fetch(`${API_URL}/produto/buscar/${id}`);
         if(resposta.ok){
-            
-        }
-         const produto = await resposta.json();
+             const produto = await resposta.json();
           const produtosTable = document.getElementById('tabelaCompra').getElementsByTagName('tbody')[0];
             const novaLinha = produtosTable.insertRow();
             novaLinha.classList.add('produto');
@@ -86,6 +84,12 @@ async function adicionarProduto() {
                                     <i class="bi bi-trash"></i> Deletar
                                  </button>`
 
+           
+            
+        }else{
+            alert("id nao encontrado ou inexistente")
+        }
+        
         
     } catch (erro) {
          alert("Erro de rede: " + erro.message);
@@ -141,12 +145,16 @@ async function salvaCompra(){
     const dataCompra = document.getElementById("dataCompra").value.trim();
      const valorTotalProduto = document.getElementById("valorTotalProduto").value.trim();
     const tabelaProduto = document.getElementById("tabelaCompra").getElementsByTagName("tbody")[0];
-    const salvaCompra = {"fonecerdor":{"id":fornecedpor},"pagamento":{"id":tipoPagamento},"dataDaCompra":dataCompra,"valorTotlaDosProdutos":valorTotalProduto, "produto":[]}
+    const salvaCompra = {"fornecedorId":fornecedpor,"pagamento":{"id":tipoPagamento},"dataCompra":dataCompra,"valorCompra":valorTotalProduto, "produto":[]}
     for(let i = 0; i < tabelaProduto.rows.length; i++){
         let idproduto = tabelaProduto.rows[i];
         let idprodutoCel = idproduto.cells[1].textContent
-        salvaCompra.produto.push({"id":idprodutoCel})
+        const valorProduto = parseFloat(idproduto.cells[3].querySelector('input').value);
+        const quantidadeProduto = parseInt(idproduto.cells[4].querySelector('input').value);
+        salvaCompra.produto.push({"produtoID":idprodutoCel,"quantidade":quantidadeProduto,"precoUnitario":valorProduto})
+        
     }
+    alert("Corpo enviado:", JSON.stringify(salvaCompra, null, 2));
     try{
         const resposta = await fetch(`${API_URL}/compra/cadastro`,
             {method: 'POST',
@@ -155,6 +163,10 @@ async function salvaCompra(){
             });
             if(resposta.ok){
                 alert("Compra Salva")
+            }else{
+                const erroTexto = await resposta.text();
+    console.error("Erro da API:", erroTexto);
+    alert("Erro ao salvar: " + erroTexto);
             }
     }catch(erro){
          alert("erro ao acessa a api: "+erro.message)
@@ -166,3 +178,31 @@ async function salvaCompra(){
 
 
 }
+
+async function buscarCompra(){
+    
+    try{
+        const resposta = await fetch(`${API_URL}/compra/${id}`)
+        if(resposta.ok){
+            const compra = await resposta.json();
+            document.getElementById("fornecedorid") = resposta.fornecedorid();
+            document.getElementById("fornecedorNome") = resposta.nomeFornecedor();
+            document.getElementById("tipoPagamentoid") = resposta.nomeFornecedor();
+            document.getElementById("tipoPagamento") = resposta.nomeFornecedor();
+            document.getElementById("dataCompra") = resposta.dataCompra();
+            document.getElementById("valorTotalProduto") = resposta.valorCompra();
+            for(let i = 0; i > length(resposta.produto());i++){
+                const tabela = document.getElementById("produtosTableModal").table
+
+            }
+        }
+        
+  }catch(erro){
+
+  }
+}
+
+ 
+
+
+    

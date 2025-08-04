@@ -6,7 +6,7 @@ async function salvaFornecedor() {
     let jsonFornecedor = {"nome":fornecedor,"dataCadastro":dataCadastro};
     
     try{
-    const resposta = await fetch(`http://localhost:8080/fornecedor/cadastro`,
+    const resposta = await fetch(`${API_URL}/fornecedor/cadastro`,
         {method: 'POST',
         headers:{ 'Content-Type': 'application/json'},
         body: JSON.stringify(jsonFornecedor)
@@ -29,7 +29,7 @@ async function listaFornecedor() {
     const doc= new jsPDF();
 
     try{
-        const resposta = await fetch(`http://localhost:8080/fornecedor/listar`);
+        const resposta = await fetch(`${API_URL}/fornecedor/listar`);
         if(!resposta.ok){
             alert("erro ao cria lista")
 
@@ -72,7 +72,7 @@ async function deletarFornecedor() {
 
     try{
         if (!confirm(`Deseja realmente excluir o fornecedor de ID ${id}?`)) return;
-        const resposta = await fetch(`http://localhost:8080/fornecedor/deletar/${id}`,
+        const resposta = await fetch(`${API_URL}/fornecedor/deletar/${id}`,
           {   method: 'DELETE',
             })
        if(resposta.ok){
@@ -87,4 +87,21 @@ async function deletarFornecedor() {
         alert("erro ao deletar", erro.message);
            
     }
+}
+async function buscarFornecedor(){
+    const id = document.getElementById("id").value.trim();
+    try{
+        const resposta = await fetch(`${API_URL}/fornecedor/${id}`);
+        fornecedor = await resposta.json();
+        document.getElementById("fornecedor").value = fornecedor.nome;
+
+
+    }catch(erro){
+        alert("erro ao buscar ", erro.message);
+    }
+}
+function limpa(){
+    document.getElementById("id").value = " ";
+    document.getElementById("fornecedor").value = " ";
+
 }

@@ -17,6 +17,9 @@ public class TipoPagamentoDTO {
 	public TipoPagamentoDTO(TipoPagamento tipo) {
 		this.tipoPagamento = tipo.getTipoPagamento();
 	}
+	public TipoPagamentoDTO() {
+		
+	}
 	
 	
 	public Long getId() {

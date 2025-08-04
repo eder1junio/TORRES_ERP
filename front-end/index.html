@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -77,42 +77,22 @@
                     </div>
                   </div>
               </div>
+              <div class="col">
+                <div class="card" style="width: 18rem;">
+                  <img src="img/relacionamento.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Fornecedor</h5>
+                      <p class="card-text">Pagina para salva, altera e deltar fornecedor.</p>
+                      <a href="fornecedor.html" class="btn btn-primary">Fornecedor</a>
+                    </div>
+                  </div>
+              </div>
           </div>
       </div>        
                  
      
    
-<script>
-    window.onload = function () {
-      Swal.fire({
-        title: 'Área restrita',
-        html:
-          `<input type="text" id="login" class="swal2-input" placeholder="Login">` +
-          `<input type="password" id="senha" class="swal2-input" placeholder="Senha">`,
-        confirmButtonText: 'Entrar',
-        focusConfirm: false,
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-        preConfirm: () => {
-          const login = document.getElementById('login').value;
-          const senha = document.getElementById('senha').value;
 
-          // Validação simples
-          if (login === 'admin' && senha === '1234') {
-            return true;
-          } else {
-            Swal.showValidationMessage('Login ou senha incorretos');
-            return false;
-          }
-        }
-      }).then((result) => {
-        if (result.isConfirmed) {
-          // Libera o conteúdo
-          document.getElementById('conteudo').style.display = 'block';
-        }
-      });
-    };
-  </script>
     
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
