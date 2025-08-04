@@ -10,6 +10,10 @@ public class TipoPagamentoDTO {
 	private Long id;
 	private String tipoPagamento;
 	
+	 public TipoPagamentoDTO() {
+	    }
+
+	
 	public TipoPagamentoDTO(TipoPagamento tipo) {
 		this.tipoPagamento = tipo.getTipoPagamento();
 	}

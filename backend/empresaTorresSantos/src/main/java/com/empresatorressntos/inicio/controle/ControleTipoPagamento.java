@@ -43,5 +43,6 @@ public class ControleTipoPagamento {
 	 return ResponseEntity.ok(lista);
 		
 	}
+	
 
 }
