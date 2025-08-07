@@ -2,8 +2,8 @@ async function salvaTipoPagamento(){
     const tipoPagamento = document.getElementById("tipoPagamento").value.trim();
     const jsonTipoPagamento = {"tipoPagamento":tipoPagamento}
     try {
-        const resposta = await fetch(`${API_URL}/tipoPagamento/cadastra`,
-            {method: "POST",
+        const resposta = await fetch(`${API_URL}/tipoPagamento/cadastra`,{
+                method: "POST",
                 headers:{"Content-Type": "application/json"},
                 body:JSON.stringify(jsonTipoPagamento)
 

@@ -1,21 +1,30 @@
- <!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="index.css"/>
-    <title>Torres ERP</title>
-     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Torres ERP - Início</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+    .card img {
+      height: 160px;
+      object-fit: cover;
+    }
+  </style>
 </head>
-<body>
-    <div class="p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3">
-        <h1>Torres ERP</h1>
+<body class="bg-light">
+  <div class="container py-4">
+    <div class="bg-primary-subtle p-3 rounded mb-4">
+      <h1 class="text-primary-emphasis">Torres ERP</h1>
     </div>
-    <ul class="nav nav-pills">
-        <li  class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Cadastro</a>
+
+    <!-- Navegação -->
+    <nav class="mb-4">
+      <ul class="nav nav-pills flex-wrap">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Cadastro</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="fornecedor.html">Fornecedor</a></li>
             <li><a class="dropdown-item" href="tipoPagamento.html">Tipo de Pagamento</a></li>
@@ -27,74 +36,75 @@
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Relatório</a>
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Relatório</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Produto</a></li>
-            <li><a class="dropdown-item" href="#">vendas por mês</a></li>
-            <li><a class="dropdown-item" href="#">Produto Mais vendido no Mês </a></li>
+            <li><a class="dropdown-item" href="#">Vendas por mês</a></li>
+            <li><a class="dropdown-item" href="#">Produto mais vendido</a></li>
           </ul>
         </li>
       </ul>
-      <div id="conteudo">
-        <div class="row">
-            <div class="col">
-              <div class="card" style="width: 18rem;">
-                <img src="img/cadastro-de-produtos.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Cadastro de  Produdo </h5>
-                  <p class="card-text">Local para cadastra novo produtos.</p>
-                  <a href="cadastroProdudo.html" class="btn btn-primary">Cadastrar Produdo</a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card" style="width: 18rem;">
-                <img src="img/cadastro-de-cliente.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Cadastro de Vendas </h5>
-                    <p class="card-text">Local para cadastra Vendas </p>
-                    <a href="cadastroVendas.html" class="btn btn-primary">Cadastrar Vendas </a>
-                  </div>
-                </div>
-              </div>  
-              <div class="col">
-                <div class="card" style="width: 18rem;">
-                  <img src="img/registrar-compras.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Cadastro de Compra </h5>
-                    <p class="card-text">cadastra a compra realizadas. </p>
-                    <a href="compras.html" class="btn btn-primary">cadastro compra </a>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card" style="width: 18rem;">
-                  <img src="img/dashboard1.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Dashbord</h5>
-                      <p class="card-text">Dashbord para análise das vendas</p>
-                      <a href="dashbord.html" class="btn btn-primary">Dashbord</a>
-                    </div>
-                  </div>
-              </div>
-              <div class="col">
-                <div class="card" style="width: 18rem;">
-                  <img src="img/relacionamento.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Fornecedor</h5>
-                      <p class="card-text">Pagina para salva, altera e deltar fornecedor.</p>
-                      <a href="fornecedor.html" class="btn btn-primary">Fornecedor</a>
-                    </div>
-                  </div>
-              </div>
-          </div>
-      </div>        
-                 
-     
-   
+    </nav>
 
-    
+    <!-- Cards -->
+    <div class="row g-3">
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100">
+          <img src="img/cadastro-de-produtos.png" class="card-img-top" alt="Cadastro de Produtos">
+          <div class="card-body">
+            <h5 class="card-title">Cadastro de Produto</h5>
+            <p class="card-text">Local para cadastrar novos produtos.</p>
+            <a href="cadastroProdudo.html" class="btn btn-primary w-100">Cadastrar Produto</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100">
+          <img src="img/cadastro-de-cliente.jpg" class="card-img-top" alt="Cadastro de Vendas">
+          <div class="card-body">
+            <h5 class="card-title">Cadastro de Vendas</h5>
+            <p class="card-text">Local para cadastrar vendas realizadas.</p>
+            <a href="cadastroVendas.html" class="btn btn-primary w-100">Cadastrar Vendas</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100">
+          <img src="img/registrar-compras.jpg" class="card-img-top" alt="Cadastro de Compras">
+          <div class="card-body">
+            <h5 class="card-title">Cadastro de Compras</h5>
+            <p class="card-text">Cadastrar compras realizadas.</p>
+            <a href="compras.html" class="btn btn-primary w-100">Cadastrar Compras</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100">
+          <img src="img/dashboard1.png" class="card-img-top" alt="Dashboard">
+          <div class="card-body">
+            <h5 class="card-title">Dashboard</h5>
+            <p class="card-text">Análise gráfica das vendas.</p>
+            <a href="dashbord.html" class="btn btn-primary w-100">Acessar Dashboard</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100">
+          <img src="img/relacionamento.jpg" class="card-img-top" alt="Fornecedor">
+          <div class="card-body">
+            <h5 class="card-title">Fornecedor</h5>
+            <p class="card-text">Cadastrar e gerenciar fornecedores.</p>
+            <a href="fornecedor.html" class="btn btn-primary w-100">Acessar Fornecedor</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
-integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>

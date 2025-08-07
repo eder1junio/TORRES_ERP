@@ -136,3 +136,34 @@ async function gerarPDF() {
     }
 }
 
+async function deletaProduto() {
+    const id = document.getElementById("IDProduto").value.trim();
+    const idNumber = Number(id);
+
+if (!id || isNaN(idNumber) || idNumber <= 0) {
+    alert("Por favor, insira um ID numérico válido e maior que zero.");
+    return;
+}
+ if(!confirm(`Tem certeza que gostaria de deleta o fornecedo de id ${id}`))
+        return;
+
+    try{
+       
+        const resposta = await fetch(`${API_URL}/produto/deletar/${id}`,
+            {method: 'DELETE',
+
+            });
+    
+
+        if(resposta.ok){
+            alert("Produto Deletado")
+
+        }else{
+            alert(resposta.text())
+        }
+    }catch(erro){
+        alert('erro ao deletar '+ erro.message)
+    }
+    
+}
+
