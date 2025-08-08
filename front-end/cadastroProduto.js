@@ -1,13 +1,15 @@
 async function salvaProduto(){
-    const nome = document.getElementById("nomeProduto").value;
+    const nome = document.getElementById("nome").value;
     const descricao = document.getElementById("descricaoProdudo").value;
-    const valorCompra = document.getElementById("valor").value;
-    const valorRevenda = document.getElementById("valorRevenda").value;
-    const CodigoBarras = document.getElementById("CodigoBarras").value;
+    const valorCompra = document.getElementById("precoCompra").value;
+    const valorRevenda = document.getElementById("precoVenda").value;
+    const codigoBarra = document.getElementById("codigoBarra").value.trim();
+    const CodigoBarras = document.getElementById("codigoBarra").value;
     const produto = {nome:nome,
         descricao:descricao,
         precoCompra:valorCompra,
         precoVenda:valorRevenda,
+        quantidadeEstoque:codigoBarra,
         codigoBarras:CodigoBarras};
 
         try{

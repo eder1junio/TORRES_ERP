@@ -50,16 +50,24 @@
         <input type="text" class="form-control" id="nome" placeholder="Nome do produto">
       </div>
       <div class="col-12 col-md-6">
-        <label for="marca" class="form-label">Marca</label>
-        <input type="text" class="form-control" id="marca" placeholder="Marca do produto">
+        <label for="descrição" class="form-label">Descrição do Produto"></data></label>
+        <input type="text" class="form-control" id="descricaoProdudo" placeholder="Descrição do Produto">
       </div>
       <div class="col-12 col-md-6">
-        <label for="preco" class="form-label">Preço</label>
-        <input type="number" class="form-control" id="preco" placeholder="Preço do produto">
+        <label for="precoVenda" class="form-label">Preço de Venda</label>
+        <input type="number" class="form-control" id="precoVenda" placeholder="Preço do produto na Venda">
+      </div>
+      <div class="col-12 col-md-6">
+        <label for="precoCompra" class="form-label">Preço de Compra</label>
+        <input type="number" class="form-control" id="precoCompra" placeholder="Preço do produto na Compra">
       </div>
       <div class="col-12 col-md-6">
         <label for="qtdEstoque" class="form-label">Qtd. Estoque</label>
         <input type="number" class="form-control" id="qtdEstoque" placeholder="Quantidade em estoque">
+      </div>
+      <div class="col-12 col-md-6">
+        <label for="codigoBarra" class="form-label">Qtd. Estoque</label>
+        <input type="number" class="form-control" id="codigoBarra" placeholder="codigo do Produto" min="1">
       </div>
       <div class="col-12 col-md-6">
         <label for="dataCadastro" class="form-label">Data de Cadastro</label>
@@ -76,7 +84,7 @@
         <button class="btn btn-warning w-100" onclick="limpa()">Limpar</button>
       </div>
       <div class="col-12 col-sm-6 col-md-3">
-        <button class="btn btn-primary w-100" onclick="listaProduto()">Listar Todos</button>
+        <button class="btn btn-primary w-100" onclick="gerarPDF()">Listar Todos</button>
       </div>
       <div class="col-12 col-sm-6 col-md-3">
         <button class="btn btn-danger w-100" onclick="deletarProduto()">Deletar</button>
@@ -84,9 +92,11 @@
     </div>
   </div>
 
-  <!-- Scripts -->
+ 
   <script src="config.js"></script>
   <script src="cadastroProduto.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
 </body>
 </html>
